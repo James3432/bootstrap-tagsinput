@@ -327,7 +327,8 @@
             return texts.sort();
           },
           highlighter: function (text) {
-            var regex = new RegExp( '(' + this.query + ')', 'gi' );
+            var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&');
+            var regex = new RegExp( '(' + query + ')', 'gi' );
             return text.replace( regex, "<strong>$1</strong>" );
           }
         }));
